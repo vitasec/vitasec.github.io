@@ -1,0 +1,63 @@
+# Site settings
+title: "Vitasec Portfolio"
+tagline: "Projects, research, and writing"
+description: "Personal portfolio and project showcase by Vitasec."
+url: "https://vitasec.github.io"
+baseurl: ""
+author:
+  name: "Vitasec"
+  url: "https://github.com/vitasec"
+  avatar: "/assets/img/avatar.png"
+  bio: "Security + engineering."
+social:
+  github: "vitasec"
+  linkedin: ""
+  twitter: ""
+  email: ""
+  rss: true
+
+lang: en
+timezone: UTC
+
+# Theme
+theme: jekyll-theme-chirpy
+# Uncomment to pin to a specific release
+# remote_theme: "cotes2020/jekyll-theme-chirpy@v7.0.1"
+
+# Navigation tabs
+collections:
+  tabs:
+    output: true
+    permalink: /:collection/:name
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+permalink: /posts/:title/
+
+paginate: 5
+paginate_path: /page:num/
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# SEO
+google_analytics:
+# Add GA4 id if you have one: G-XXXXXXX
+
+# Comments (optional)
+comments:
+  provider: false
+
+# Exclusions
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
