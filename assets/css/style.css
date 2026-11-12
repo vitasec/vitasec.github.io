@@ -512,3 +512,18 @@ a.cert:hover .cert-seal { background: var(--blood); color: var(--bg); border-sty
 .hud-coords { position: absolute; left: 0; bottom: -4px; transform: translateY(100%); }
 .hud-count { position: absolute; right: 0; bottom: -4px; transform: translateY(100%); color: var(--bone); }
 @media (max-width: 960px) { .scope { max-width: 260px; margin-top: 24px; } }
+
+/* ============ Locked certificates ============ */
+.locked-wrap { position: relative; display: grid; gap: 12px; }
+.cert.locked { filter: blur(6px); opacity: .55; user-select: none; -webkit-user-select: none; pointer-events: none; }
+.cert.locked h4, .cert.locked .cert-full, .cert.locked .meta { letter-spacing: .02em; }
+.lock-overlay {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  text-align: center; pointer-events: none;
+}
+.lock-overlay .lock-icon {
+  display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%; font-size: 24px;
+  background: var(--surface); border: 2px dashed var(--blood-2); margin-bottom: 6px;
+}
+.lock-overlay b { font: 400 30px/1 var(--font-display); letter-spacing: .06em; text-transform: uppercase; color: var(--chalk); }
+.lock-overlay span:last-child { font: 400 14px var(--font-type); color: var(--muted); }

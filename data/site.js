@@ -141,12 +141,12 @@ window.SITE = {
   ],
 
   // ---------- Sertifikatlar ----------
-  certs: [
-    { name: "eWPTX", full: "Web Application Penetration Tester eXtreme", issuer: "INE Security", date: "", link: "" },
-    { name: "CRTO", full: "Certified Red Team Operator", issuer: "Zero-Point Security", date: "", link: "" },
-    { name: "CPTS", full: "Certified Penetration Testing Specialist", issuer: "Hack The Box", date: "", link: "" },
-    { name: "BSCP", full: "Burp Suite Certified Practitioner", issuer: "PortSwigger", date: "", link: "" }
-  ],
+  // Alınmış sertifikatlar burada açıq göstərilir:
+  // { name: "CRTO", full: "Certified Red Team Operator", issuer: "Zero-Point Security", date: "2026", link: "" }
+  certs: [],
+  // Hələ alınmamış / gizli sertifikatların sayı — bulanıq "Tezliklə" kartları kimi göstərilir.
+  // Adlar səhifəyə yazılmır. 0 etsəniz, kilidli kartlar yox olur.
+  certsLocked: 4,
 
   // ---------- Hangman oyunu (söz yalnız A-Z hərfləri) ----------
   game: {

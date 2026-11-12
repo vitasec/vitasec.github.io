@@ -21,7 +21,7 @@
       "w.articles": "MƏQALƏLƏR", "w.game": "OYNA", "w.hack": "HAKATONLAR", "sub.hack": "Komanda ilə qurduğum layihələr və qazandığım mükafatlar", "h.project": "Layihə", "w.404": "TAPILMADI",
       "sub.hof": "Məsuliyyətlə bildirilmiş və təsdiqlənmiş zəifliklər",
       "sub.game": "Kibertəhlükəsizlik terminini tap — 6 səhv haqqın var",
-      "h.ctf": "CTF nəticələri", "h.certs": "Sertifikatlar", "w.ctfOnly": "CTF", "cve.pending": "Təsdiq gözləyir", "cve.req": "CVE sorğusu göndərilib", "rail.top": "Başlanğıc", "rail.solved": "TAPILDI!",
+      "h.ctf": "CTF nəticələri", "h.certs": "Sertifikatlar", "cert.soon": "Tezliklə", "cert.soonSub": "Yeni sertifikatlar yoldadır", "w.ctfOnly": "CTF", "cve.pending": "Təsdiq gözləyir", "cve.req": "CVE sorğusu göndərilib", "rail.top": "Başlanğıc", "rail.solved": "TAPILDI!",
       "a.all": "Hamısı →", "a.min": "dəq oxu", "a.soon": "Tezliklə...",
       "f.all": "Hamısı", "case": "DOSYE", "empty": "Bu kateqoriyada qeyd yoxdur.", "none": "Hələ qeyd yoxdur.",
       "g.hint": "İpucu", "g.lives": "Səhv haqqı", "g.win": "Sağ qaldın! Flag:", "g.lose": "Asıldın ☠ Söz:", "g.new": "Yeni söz ↻",
@@ -43,7 +43,7 @@
       "w.articles": "ARTICLES", "w.game": "PLAY", "w.hack": "HACKATHONS", "sub.hack": "Projects I built with my teams and the awards we won", "h.project": "Project", "w.404": "NOT FOUND",
       "sub.hof": "Responsibly disclosed, confirmed vulnerabilities",
       "sub.game": "Guess the security term — you have 6 lives",
-      "h.ctf": "CTF results", "h.certs": "Certifications", "w.ctfOnly": "CTF", "cve.pending": "Pending", "cve.req": "CVE requested", "rail.top": "Top", "rail.solved": "SOLVED!",
+      "h.ctf": "CTF results", "h.certs": "Certifications", "cert.soon": "Coming soon", "cert.soonSub": "New certifications on the way", "w.ctfOnly": "CTF", "cve.pending": "Pending", "cve.req": "CVE requested", "rail.top": "Top", "rail.solved": "SOLVED!",
       "a.all": "All →", "a.min": "min read", "a.soon": "Coming soon...",
       "f.all": "All", "case": "CASE", "empty": "Nothing in this category.", "none": "Nothing yet.",
       "g.hint": "Hint", "g.lives": "Lives", "g.win": "You survived! Flag:", "g.lose": "Hanged ☠ The word was:", "g.new": "New word ↻",
@@ -316,7 +316,7 @@
         <div><h4>${esc(tr(c.name))}</h4>${c.full ? `<span class="cert-full">${esc(tr(c.full))}</span>` : ""}
         <span class="meta">${[tr(c.issuer), c.date].filter(Boolean).map(esc).join(" · ")}</span></div>
       </${tag}>`;
-    }).join(""));
+    }).join("") + lockedCerts(Number(S.certsLocked) || 0));
 
     set("latest-articles", articles.slice(0, 4).map(articleCard).join("") || `<p class="muted">${t("a.soon")}</p>`);
 
@@ -327,6 +327,20 @@
 
     if (game) game.relabel(); else game = initGame();
     initScope();
+  }
+
+  // ================= locked certificates =================
+  // Real ad DOM-a yazılmır: yalnız təsadüfi saxta simvollar, bulanıq göstərilir.
+  function lockedCerts(n) {
+    if (n <= 0) return "";
+    const junk = (len) => Array.from({ length: len }, () => "▒▓░█"[Math.floor(Math.random() * 4)]).join("");
+    const cards = Array.from({ length: n }, () => `
+      <div class="card cert locked" aria-hidden="true">
+        <span class="cert-seal">?</span>
+        <div><h4>${junk(4 + Math.floor(Math.random() * 2))}</h4><span class="cert-full">${junk(22 + Math.floor(Math.random() * 12))}</span>
+        <span class="meta">${junk(12)}</span></div>
+      </div>`).join("");
+    return `<div class="locked-wrap">${cards}<div class="lock-overlay"><span class="lock-icon">🔒</span><b>${t("cert.soon")}</b><span>${t("cert.soonSub")}</span></div></div>`;
   }
 
   // ================= HERO SCOPE: crosshair hunts a bug =================
