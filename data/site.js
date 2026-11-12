@@ -142,7 +142,7 @@ window.SITE = {
 
   // ---------- Sertifikatlar ----------
   // Alınmış sertifikatlar burada açıq göstərilir:
-  // { name: "CRTO", full: "Certified Red Team Operator", issuer: "Zero-Point Security", date: "2026", link: "" }
+  // { name: "ABCD", full: "Sertifikatın tam adı", issuer: "Təşkilat", date: "2026", link: "" }
   certs: [],
   // Hələ alınmamış / gizli sertifikatların sayı — bulanıq "Tezliklə" kartları kimi göstərilir.
   // Adlar səhifəyə yazılmır. 0 etsəniz, kilidli kartlar yox olur.
