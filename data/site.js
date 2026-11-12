@@ -56,7 +56,7 @@ window.SITE = {
   ctfs: [
     // Yalnız iştirak üçün: place: { az: "İştirakçı", en: "Participant" }, team: ""
     { name: "NovruzCTF 2026", place: "#63", team: { az: "3700 xal · CanYouHack", en: "3700 pts · CanYouHack" }, date: "2026-03", link: "" },
-    { name: "AzTU-CTF", place: { az: "6-cı yer", en: "6th place" }, team: { az: "Komanda ilə · AzTU & HackinLayers", en: "With my team · AzTU & HackinLayers" }, date: "2026-05", link: "" }
+    { name: "AzTU-CTF", place: "#6", team: { az: "Komanda ilə · AzTU & HackinLayers", en: "With my team · AzTU & HackinLayers" }, date: "2026-05", link: "" }
   ],
 
   // ---------- Hakatonlar ----------
