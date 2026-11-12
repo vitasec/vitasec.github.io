@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>hangman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Special+Elite&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var l=localStorage.getItem('lang');if(l)document.documentElement.lang=l;}catch(e){}</script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="progress" id="progress"></div>
+  <header class="nav">
+    <a class="brand" href="index.html"><span class="brand-noose">ʘ</span> <span data-bind="handle"></span></a>
+    <nav class="nav-links">
+      <a href="index.html" data-i18n="nav.home"></a>
+      <a href="blog.html" data-i18n="p.back"></a>
+    </nav>
+    <div class="nav-tools">
+      <button class="tool-btn lang-toggle" aria-label="Language"></button>
+      <button class="tool-btn theme-toggle" aria-label="Theme"></button>
+      <button class="tool-btn nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <article class="post" id="post"></article>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> <span data-bind="name"></span></span>
+    <a href="blog.html" data-i18n="p.back"></a>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="data/site.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

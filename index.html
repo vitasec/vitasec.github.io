@@ -1,4 +1,218 @@
----
-layout: home
-# Index page
----
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>hangman | Security</title>
+  <meta name="description" content="Kibertəhlükəsizlik mütəxəssisi — bug bounty uğurları, CTF nəticələri, CVE-lər və məqalələr.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Special+Elite&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var l=localStorage.getItem('lang');if(l)document.documentElement.lang=l;}catch(e){}</script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="brand" href="#home"><span class="brand-noose">ʘ</span> <span data-bind="handle"></span></a>
+    <nav class="nav-links">
+      <a href="#achievements" data-i18n="nav.cases"></a>
+      <a href="#ctf">CTF</a>
+      <a href="#hackathons" data-i18n="nav.hack"></a>
+      <a href="#skills" data-i18n="nav.skills"></a>
+      <a href="#experience" data-i18n="nav.exp"></a>
+      <a href="#articles" data-i18n="nav.articles"></a>
+      <a href="#game" data-i18n="nav.game"></a>
+      <a href="#contact" data-i18n="nav.contact"></a>
+    </nav>
+    <div class="nav-tools">
+      <button class="tool-btn lang-toggle" aria-label="Language"></button>
+      <button class="tool-btn theme-toggle" aria-label="Theme"></button>
+      <button class="tool-btn nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-text">
+        <p class="typewriter location"><span class="dot"></span> <span data-bind="location"></span></p>
+        <h1 class="hang-name" id="hang-name"></h1>
+        <p class="role-line"><span id="typed"></span><span class="caret"></span></p>
+        <p class="lead" data-bind="bio"></p>
+        <div class="actions">
+          <a class="btn btn-blood" href="#achievements" data-i18n="hero.cases"></a>
+          <a class="btn" href="blog.html" data-i18n="nav.articles"></a>
+          <a class="btn" href="#game" data-i18n="hero.play"></a>
+          <a class="btn" id="cv-btn" href="#" download hidden>CV ↓</a>
+        </div>
+      </div>
+
+      <!-- Scope: crosshair hunting a bug -->
+      <div class="hero-art">
+        <div class="scope" id="scope">
+          <svg viewBox="0 0 320 320" aria-hidden="true">
+            <g class="sc-grid">
+              <circle cx="160" cy="160" r="150" class="sc-ring outer"/>
+              <circle cx="160" cy="160" r="100" class="sc-ring"/>
+              <circle cx="160" cy="160" r="50" class="sc-ring dashed"/>
+              <line x1="10" y1="160" x2="310" y2="160" class="sc-axis"/>
+              <line x1="160" y1="10" x2="160" y2="310" class="sc-axis"/>
+              <g class="sc-ticks"></g>
+            </g>
+            <g class="sc-sweep"><path d="M160 160 L160 10 A150 150 0 0 1 266 54 Z"/></g>
+            <g id="sc-splat" class="sc-splat" opacity="0">
+              <path d="M-9 -9 L9 9 M9 -9 L-9 9"/>
+              <circle r="15" class="splat-ring"/>
+            </g>
+            <g id="sc-bug" class="sc-bug">
+              <g class="bug-legs">
+                <path d="M-6 -3 L-14 -9"/><path d="M-7 2 L-16 2"/><path d="M-6 7 L-14 14"/>
+                <path d="M6 -3 L14 -9"/><path d="M7 2 L16 2"/><path d="M6 7 L14 14"/>
+              </g>
+              <path class="bug-ant" d="M-2 -12 Q-5 -18 -9 -20 M2 -12 Q5 -18 9 -20"/>
+              <ellipse cx="0" cy="3" rx="7.5" ry="10.5" class="bug-body"/>
+              <line x1="0" y1="-6" x2="0" y2="13" class="bug-split"/>
+              <circle cx="0" cy="-9" r="4.8" class="bug-head"/>
+            </g>
+            <g id="sc-reticle" class="sc-reticle">
+              <circle r="24" class="ret-ring"/>
+              <path class="ret-ticks" d="M0 -34 V-16 M0 16 V34 M-34 0 H-16 M16 0 H34"/>
+              <path class="ret-corners" d="M-30 -20 V-30 H-20 M20 -30 H30 V-20 M30 20 V30 H20 M-20 30 H-30 V20"/>
+              <circle r="2.2" class="ret-dot"/>
+            </g>
+          </svg>
+          <div class="scope-hud">
+            <span class="hud-status" id="hud-status"></span>
+            <span class="hud-coords" id="hud-coords">X:000 Y:000</span>
+            <span class="hud-count" id="hud-count"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><span class="stat-num" data-stat="bugs">0</span><span class="tally" data-tally="bugs"></span><span class="stat-label" data-i18n="stat.bugs"></span></div>
+        <div class="stat"><span class="stat-num" data-stat="companies">0</span><span class="tally" data-tally="companies"></span><span class="stat-label" data-i18n="stat.companies"></span></div>
+        <div class="stat"><span class="stat-num" data-stat="cves">0</span><span class="tally" data-tally="cves"></span><span class="stat-label">CVE</span></div>
+        <div class="stat"><span class="stat-num" data-stat="ctfs">0</span><span class="tally" data-tally="ctfs"></span><span class="stat-label" data-i18n="stat.ctfs"></span></div>
+        <div class="stat"><span class="stat-num" data-stat="hackathons">0</span><span class="tally" data-tally="hackathons"></span><span class="stat-label" data-i18n="stat.hack"></span></div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements" class="section">
+      <header class="section-head">
+        <h2 class="hang-word" data-word="w.hof"></h2>
+        <p class="sub-line muted" data-i18n="sub.hof"></p>
+      </header>
+      <div class="filters" id="sev-filters" role="group"></div>
+      <div class="dossiers" id="achievements-list"></div>
+    </section>
+
+    <!-- CTF + CVE -->
+    <section id="ctf" class="section">
+      <header class="section-head">
+        <h2 class="hang-word" data-word="w.ctf"></h2>
+      </header>
+      <div class="split">
+        <div>
+          <h3 class="sub" data-i18n="h.ctf"></h3>
+          <div class="ctf-list" id="ctf-list"></div>
+        </div>
+        <div id="cves">
+          <h3 class="sub">CVE</h3>
+          <div class="stack" id="cve-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HACKATHONS -->
+    <section id="hackathons" class="section">
+      <header class="section-head">
+        <h2 class="hang-word" data-word="w.hack"></h2>
+        <p class="sub-line muted" data-i18n="sub.hack"></p>
+      </header>
+      <div class="hacks" id="hack-list"></div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <header class="section-head">
+        <h2 class="hang-word" data-word="w.skills"></h2>
+      </header>
+      <div class="skills" id="skills-list"></div>
+    </section>
+
+    <!-- EXPERIENCE + CERTS -->
+    <section id="experience" class="section">
+      <header class="section-head">
+        <h2 class="hang-word" data-word="w.exp"></h2>
+      </header>
+      <div class="split">
+        <div class="timeline" id="exp-list"></div>
+        <div id="certs">
+          <h3 class="sub" data-i18n="h.certs"></h3>
+          <div class="stack" id="cert-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLES -->
+    <section id="articles" class="section">
+      <header class="section-head row-head">
+        <h2 class="hang-word" data-word="w.articles"></h2>
+        <a class="btn" href="blog.html" data-i18n="a.all"></a>
+      </header>
+      <div class="articles" id="latest-articles"></div>
+    </section>
+
+    <!-- GAME -->
+    <section id="game" class="section">
+      <header class="section-head">
+        <h2 class="hang-word" data-word="w.game"></h2>
+        <p class="sub-line muted" data-i18n="sub.game"></p>
+      </header>
+      <div class="game">
+        <svg class="gallows game-gallows" viewBox="0 0 200 240" aria-hidden="true">
+          <line class="g" x1="10" y1="232" x2="190" y2="232"/>
+          <line class="g" x1="50" y1="232" x2="50" y2="18"/>
+          <line class="g" x1="46" y1="20" x2="145" y2="20"/>
+          <line class="g" x1="50" y1="58" x2="88" y2="20"/>
+          <line class="rope" x1="140" y1="20" x2="140" y2="52"/>
+          <circle class="part" cx="140" cy="70" r="18"/>
+          <line class="part" x1="140" y1="88" x2="140" y2="150"/>
+          <line class="part" x1="140" y1="102" x2="116" y2="132"/>
+          <line class="part" x1="140" y1="102" x2="164" y2="132"/>
+          <line class="part" x1="140" y1="150" x2="120" y2="192"/>
+          <line class="part" x1="140" y1="150" x2="160" y2="192"/>
+        </svg>
+        <div class="game-panel">
+          <p class="game-hint typewriter" id="game-hint"></p>
+          <div class="game-word" id="game-word" aria-live="polite"></div>
+          <p class="game-status" id="game-status" aria-live="polite"></p>
+          <div class="keyboard" id="keyboard"></div>
+          <button class="btn" id="game-reset" data-i18n="g.new"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <div class="contact-card">
+        <h2 class="last-words" data-i18n-html="c.title"></h2>
+        <p data-i18n="c.text"></p>
+        <div class="socials" id="socials"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> <span data-bind="name"></span></span>
+    <a href="#home" data-i18n="f.top"></a>
+  </footer>
+
+  <script src="data/site.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

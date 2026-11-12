@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Articles | hangman</title>
+  <meta name="description" content="Bug bounty writeup-ları, CTF həlləri və kibertəhlükəsizlik məqalələri.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Special+Elite&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var l=localStorage.getItem('lang');if(l)document.documentElement.lang=l;}catch(e){}</script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="nav">
+    <a class="brand" href="index.html"><span class="brand-noose">ʘ</span> <span data-bind="handle"></span></a>
+    <nav class="nav-links">
+      <a href="index.html" data-i18n="nav.home"></a>
+      <a href="index.html#achievements" data-i18n="nav.cases"></a>
+      <a href="index.html#contact" data-i18n="nav.contact"></a>
+    </nav>
+    <div class="nav-tools">
+      <button class="tool-btn lang-toggle" aria-label="Language"></button>
+      <button class="tool-btn theme-toggle" aria-label="Theme"></button>
+      <button class="tool-btn nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="section first">
+      <header class="section-head">
+        <h1 class="hang-word" data-word="w.articles"></h1>
+      </header>
+      <input id="search" class="input" type="search" data-i18n-ph="b.search">
+      <div class="filters" id="tag-filters" role="group"></div>
+      <div class="articles" id="all-articles"></div>
+      <p class="empty" id="no-results" hidden data-i18n="b.none"></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> <span data-bind="name"></span></span>
+    <a href="index.html" data-i18n="nav.home"></a>
+  </footer>
+
+  <script src="data/site.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
