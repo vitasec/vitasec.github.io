@@ -54,9 +54,8 @@ window.SITE = {
 
   // ---------- CTF nəticələri ----------
   ctfs: [
-    { name: "Nümunə CTF 2026", place: { az: "1-ci yer", en: "1st place" }, team: "Komanda adı", date: "2026-10", link: "" },
-    { name: "Nümunə Online CTF", place: "Top 10", team: "Solo", date: "2026-06", link: "" },
-    { name: "Universitetlərarası CTF", place: { az: "3-cü yer", en: "3rd place" }, team: "Komanda adı", date: "2026-02", link: "" }
+    // Yalnız iştirak üçün: place: { az: "İştirakçı", en: "Participant" }, team: ""
+    { name: "NovruzCTF 2026", place: "#63", team: { az: "3700 xal · CanYouHack", en: "3700 pts · CanYouHack" }, date: "2026-03", link: "" }
   ],
 
   // ---------- Hakatonlar ----------
