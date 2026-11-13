@@ -176,6 +176,7 @@ a.chip:hover { border-color: var(--blood-2); color: var(--chalk); }
 .section-head p { margin: 12px 0 0; }
 .sub { font: 400 22px var(--font-display); letter-spacing: .05em; text-transform: uppercase; margin-bottom: 16px; color: var(--bone); }
 .split { display: grid; grid-template-columns: 1.3fr 1fr; gap: 34px; align-items: start; }
+.split > * { min-width: 0; }
 .stack { display: grid; gap: 12px; }
 .card {
   display: block; text-decoration: none; background: var(--surface); border: 1px solid var(--line);
@@ -429,6 +430,7 @@ a.ctf-row:hover { background: var(--surface); }
 #ctf.no-cve .split { grid-template-columns: 1fr; }
 .pending { font: 400 11px var(--font-mono); text-transform: uppercase; letter-spacing: .06em; padding: 2px 8px; border: 1px dashed var(--sev-medium); color: var(--sev-medium); border-radius: 3px; margin-left: 6px; }
 .cert { display: flex; align-items: center; gap: 16px; }
+.cert > div { min-width: 0; }
 .cert h4 { margin: 0; font: 400 26px/1 var(--font-display); letter-spacing: .04em; }
 .cert-full { display: block; font-size: 14px; color: var(--text); margin: 4px 0 2px; }
 .cert-seal {
@@ -516,7 +518,7 @@ a.cert:hover .cert-seal { background: var(--blood); color: var(--bg); border-sty
 /* ============ Locked certificates ============ */
 .locked-wrap { position: relative; display: grid; gap: 12px; }
 .cert.locked { filter: blur(6px); opacity: .55; user-select: none; -webkit-user-select: none; pointer-events: none; }
-.cert.locked h4, .cert.locked .cert-full, .cert.locked .meta { letter-spacing: .02em; }
+.cert.locked h4, .cert.locked .cert-full, .cert.locked .meta { letter-spacing: .02em; overflow-wrap: anywhere; }
 .lock-overlay {
   position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
   text-align: center; pointer-events: none;
