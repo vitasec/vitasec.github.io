@@ -22,7 +22,7 @@ window.SITE = {
   contact: {
     email: "",          // məs: "siz@example.com"
     github: "https://github.com/vitasec",
-    linkedin: "", // profil linki lazımdır: "https://www.linkedin.com/in/<istifadəçi-adı>/"
+    linkedin: "https://www.linkedin.com/in/davidabdurahmanov/",
     medium: "https://medium.com/@davidabdurahmanov38",
     twitter: "",
     hackerone: "",
