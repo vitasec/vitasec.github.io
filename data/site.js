@@ -32,7 +32,7 @@ window.SITE = {
 
   // ---------- Statistika ----------
   // null qalsa, aşağıdakı siyahılardan avtomatik hesablanır
-  stats: { bugs: null, companies: null, cves: null, ctfs: null, hackathons: null },
+  stats: { bugs: null, companies: null, cves: 13, ctfs: null, hackathons: null },
 
   // ---------- Hall of Fame / Uğurlar ----------
   // Hər layihə/şirkət üçün bir kart.
